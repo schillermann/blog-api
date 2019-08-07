@@ -1,0 +1,15 @@
+{
+    "name": "schillermann/blog",
+    "description": "Best Blog",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mario Schillermann",
+            "email": "mario.schillermann@gmail.de"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"Blog\\": "Blog/"}
+    },
+    "require": {}
+}

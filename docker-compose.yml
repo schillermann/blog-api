@@ -1,0 +1,25 @@
+version: '3'
+services:
+  app:
+    image: blog
+    ports:
+      - "80:80"
+    volumes:
+      - ./:/var/www
+    networks:
+      - bridge
+  mysql:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+      - "33060:33060"
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: blog
+      MYSQL_USER: blog
+      MYSQL_PASSWORD: password
+    networks:
+      - bridge
+networks:
+  bridge:
+    driver: bridge
