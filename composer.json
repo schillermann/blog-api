@@ -11,5 +11,7 @@
     "autoload": {
         "psr-4": {"Blog\\": "Blog/"}
     },
-    "require": {}
+    "require": {
+        "ext-PDO": "^7.1"
+    }
 }
