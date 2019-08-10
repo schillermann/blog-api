@@ -1,5 +1,5 @@
 <?php
-namespace Blog;
+namespace SimpleApi;
 
 interface DatabaseInterface
 {

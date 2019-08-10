@@ -3,6 +3,7 @@ FROM alpine:latest
 RUN apk add --update \
   apache2 \
   php7-apache2 \
+  php7-json \
   php7-mysqli \
   php7-xdebug
 
