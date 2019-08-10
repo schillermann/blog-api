@@ -2,11 +2,12 @@ FROM alpine:latest
 
 RUN apk add --update \
   apache2 \
-  php-apache2
+  php7-apache2 \
+  php7-mysqli \
+  php7-xdebug
 
-RUN echo "ServerName localhost" >> /etc/apache2/httpd.conf
+COPY config /etc/
 RUN mkdir -p /run/apache2
 
-CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
+CMD ["httpd", "-D", "FOREGROUND"]
 EXPOSE 80
-
