@@ -15,7 +15,8 @@ class Endpoint
         $request = self::filterRequest($uri, $method, $rootPath);
 
         $endpointFunction = include $request->getRouteFilePath();
-        return $endpointFunction($request->getParameters());
+        $parameters = array_merge($request->getParameters(), $_GET, $_POST);
+        return $endpointFunction($parameters);
     }
 
     static function filterRequest(string $uri, $method = 'GET', string $rootPath = self::ROOT_PATH): Request
