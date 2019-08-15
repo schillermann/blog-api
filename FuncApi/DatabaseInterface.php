@@ -1,5 +1,5 @@
 <?php
-namespace SimpleApi;
+namespace FuncApi;
 
 interface DatabaseInterface
 {

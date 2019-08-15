@@ -9,7 +9,7 @@
         }
     ],
     "autoload": {
-        "psr-4": {"Blog\\": "Blog/"}
+        "psr-4": {"FuncApi\\": "FuncApi/"}
     },
     "require": {
         "ext-PDO": "^7.1"

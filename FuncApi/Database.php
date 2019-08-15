@@ -1,5 +1,5 @@
 <?php
-namespace SimpleApi;
+namespace FuncApi;
 
 class Database implements DatabaseInterface
 {

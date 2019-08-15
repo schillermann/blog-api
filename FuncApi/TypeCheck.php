@@ -1,14 +1,14 @@
 <?php
-namespace SimpleApi;
+namespace FuncApi;
 
 class TypeCheck
 {
     static function is_datetime(string $dateTime): bool
     {
         try {
-            new DateTime($dateTime);
+            new \DateTime($dateTime);
             return true;
-        } catch (Exception $exc) {
+        } catch (\Exception $exc) {
             return false;
         }
     }

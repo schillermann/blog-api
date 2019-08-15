@@ -1,5 +1,5 @@
 <?php
-namespace SimpleApi;
+namespace FuncApi;
 
 class Endpoint
 {
@@ -22,7 +22,7 @@ class Endpoint
     {
         $absoluteRootPath = realpath($rootPath);
         if(!$absoluteRootPath)
-            throw new Exception('Base path not found: ' . $rootPath);
+            throw new \Exception('Base path not found: ' . $rootPath);
 
         $uriParts = explode(self::URI_DELIMITER, trim($uri, self::URI_DELIMITER));
         $route = '';
@@ -48,7 +48,7 @@ class Endpoint
             }
 
             if(!file_exists($absoluteRootPath . $route)) {
-                throw new Exception('Route not found: ' . $route);
+                throw new \Exception('Route not found: ' . $route);
             }
         }
 
@@ -58,7 +58,7 @@ class Endpoint
         $absoluteFileToEndpoint = realpath($fileToEndpoint);
 
         if(!$absoluteFileToEndpoint)
-            throw new Exception('File not found: ' . $fileToEndpoint);
+            throw new \Exception('File not found: ' . $fileToEndpoint);
 
         $request->setRouteFilePath($absoluteFileToEndpoint);
 
