@@ -10,16 +10,15 @@ class Endpoint
     const TYPE_DATE = '@date';
     const TYPE_STRING = '@string';
 
-    static function getResponse(string $uri, $method = 'GET', string $rootPath = self::ROOT_PATH): array
+    static function getResponse(string $uri, string $rootPath = self::ROOT_PATH): array
     {
-        $request = self::filterRequest($uri, $method, $rootPath);
+        $request = self::filterRequest($uri, $rootPath);
 
         $endpointFunction = include $request->getRouteFilePath();
-        $parameters = array_merge($request->getParameters(), $_GET, $_POST);
-        return $endpointFunction($parameters);
+        return $endpointFunction($request->getParameters());
     }
 
-    static function filterRequest(string $uri, $method = 'GET', string $rootPath = self::ROOT_PATH): Request
+    static function filterRequest(string $uri, string $rootPath = self::ROOT_PATH): Request
     {
         $absoluteRootPath = realpath($rootPath);
         if(!$absoluteRootPath)
@@ -55,7 +54,7 @@ class Endpoint
 
         $request->setRoute($route);
 
-        $fileToEndpoint = $absoluteRootPath . $route . self::URI_DELIMITER . strtolower($method) . self::PHP_FILE_EXTENSION;
+        $fileToEndpoint = $absoluteRootPath . $route . self::URI_DELIMITER . $request->getMethod() . self::PHP_FILE_EXTENSION;
         $absoluteFileToEndpoint = realpath($fileToEndpoint);
 
         if(!$absoluteFileToEndpoint)

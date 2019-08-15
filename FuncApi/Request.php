@@ -6,6 +6,13 @@ class Request
     protected $route = '';
     protected $routeFilePath = '';
     protected $parameters = [];
+    protected $method = '';
+
+    function __construct()
+    {
+        $this->parameters = array_merge($_GET, $_POST);
+        $this->method = strtolower($_SERVER['REQUEST_METHOD']);
+    }
 
     function getRoute(): string
     {
@@ -52,5 +59,10 @@ class Request
 
         $this->parameters[$key] = $value;
         return true;
+    }
+
+    function getMethod(): string
+    {
+        return $this->method;
     }
 }
