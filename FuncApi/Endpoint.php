@@ -39,9 +39,6 @@ class Endpoint
             } elseif (is_numeric($resource)) {
                 $route .= self::URI_DELIMITER . self::TYPE_ID;
                 $request->setParameter($key, (int)$resource);
-            } elseif (TypeCheck::is_datetime($resource)) {
-                $route .= self::URI_DELIMITER . self::TYPE_DATE;
-                $request->setParameter($key, new \DateTime($resource));
             } else {
                 $route .= self::URI_DELIMITER . self::TYPE_STRING;
                 $request->setParameter($key, $resource);
